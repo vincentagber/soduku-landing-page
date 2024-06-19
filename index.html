@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Green Powder Drink & Herbal Toothpaste</title>
+      <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+      <header>
+            <nav>
+                  <div class="logo">SUDOKU</div>
+                  <ul class="nav-links">
+                        <li><a href="#green-powder">Green Powder Drink</a></li>
+                        <li><a href="#herbal-toothpaste">Herbal Toothpaste</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                  </ul>
+                  <div class="hamburger">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                  </div>
+            </nav>
+      </header>
+
+      <section id="hero">
+            <h1>Welcome to Sudoku Wellness</h1>
+            <p>Your source for balanced and energizing products</p>
+            <a href="https://wa.me/+2348029662282?text=Hello,%20tell%20me%20more%20about%20the%20products"
+                  class="cta">Discover More</a>
+      </section>
+
+      <section id="green-powder" class="product-section">
+            <h2>Green Powder Drink from Flax Seed</h2>
+            <img src="/images/green power.jpeg" alt="Green Powder Drink">
+            <p>Flax seeds and barley leaves powder. Balanced and charging energy drink for a good body.</p>
+            <ul>
+                  <li>Natural ingredients for a healthy lifestyle</li>
+                  <li>Easy to prepare and delicious</li>
+                  <li>Supports digestion and overall wellness</li>
+            </ul>
+            <a href="#order" class="cta">Order Now</a>
+      </section>
+
+      <section id="herbal-toothpaste" class="product-section">
+            <h2>Herbal Toothpaste</h2>
+            <img src="/images/toothpast.jpeg" alt="Herbal Toothpaste">
+            <p>Experience the benefits of high-quality phytoenzyme and exclusive oral probiotics.</p>
+            <ul>
+                  <li>Gentle teeth cleaning with papain</li>
+                  <li>Restores balance of oral flora</li>
+                  <li>Brightens teeth with natural plant extracts</li>
+                  <li>Includes precious herbal extracts like Centella Asiatica and Tea</li>
+                  <li>Future Bio Core Technology for advanced dental care</li>
+            </ul>
+            <a href="#order" class="cta">Order Now</a>
+      </section>
+
+      <section id="testimonials">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-slider">
+                  <div class="testimonial">
+                        <p>"The green powder drink has been a game changer for my daily energy levels!" - Jane D.</p>
+                  </div>
+                  <div class="testimonial">
+                        <p>"Using the herbal toothpaste leaves my mouth feeling so clean and fresh. I absolutely love
+                              it!" - Doris P.</p>
+                  </div>
+                  <div class="testimonial">
+                        <p>"I love how clean and fresh my mouth feels after using the herbal toothpaste." - John S.</p>
+                  </div>
+                  <div class="testimonial">
+                        "My mouth feels incredibly clean and fresh after using the herbal toothpaste. I love it!" -
+                        Philip N.
+                  </div>
+            </div>
+      </section>
+
+      <section id="video-intro">
+            <h2>Product Video Introduction</h2>
+            <div class="video-container">
+                  <iframe width="560" height="315" src="/images/product.mp4" frameborder="0" allowfullscreen></iframe>
+            </div>
+      </section>
+
+      <section id="order">
+            <h2>Order Your Products Today</h2>
+            <p>Don't wait to experience the benefits of our products. Order now and start your journey to better health!
+            </p>
+            <a href="https://wa.me/+2348029662282?text=Hello,%20tell%20me%20more%20about%20the%20products"
+                  class="cta">Buy Now</a>
+      </section>
+
+      <footer id="contact">
+            <p>Contact us at <a href="tel:+2348177148582">+2348177148582</a></p>
+      </footer>
+
+      <script>
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', () => {
+                  navLinks.classList.toggle('active');
+            });
+
+            // Testimonial slider
+            const testimonials = document.querySelector('.testimonial-slider');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            testimonials.addEventListener('mousedown', (e) => {
+                  isDown = true;
+                  testimonials.classList.add('active');
+                  startX = e.pageX - testimonials.offsetLeft;
+                  scrollLeft = testimonials.scrollLeft;
+            });
+            testimonials.addEventListener('mouseleave', () => {
+                  isDown = false;
+                  testimonials.classList.remove('active');
+            });
+            testimonials.addEventListener('mouseup', () => {
+                  isDown = false;
+                  testimonials.classList.remove('active');
+            });
+            testimonials.addEventListener('mousemove', (e) => {
+                  if (!isDown) return;
+                  e.preventDefault();
+                  const x = e.pageX - testimonials.offsetLeft;
+                  const walk = (x - startX) * 3; //scroll-fast
+                  testimonials.scrollLeft = scrollLeft - walk;
+            });
+
+            // Auto-scroll functionality for testimonials
+            function autoScroll() {
+                  const maxScrollLeft = testimonials.scrollWidth - testimonials.clientWidth;
+                  if (testimonials.scrollLeft >= maxScrollLeft) {
+                        testimonials.scrollLeft = 0;
+                  } else {
+                        testimonials.scrollLeft += 1;
+                  }
+            }
+
+            let autoScrollInterval = setInterval(autoScroll, 20);
+
+            // Pause auto-scroll on mouse down and resume on mouse up
+            testimonials.addEventListener('mousedown', () => {
+                  clearInterval(autoScrollInterval);
+            });
+
+            testimonials.addEventListener('mouseup', () => {
+                  autoScrollInterval = setInterval(autoScroll, 20);
+            });
+      </script>
+</body>
+
+</html>

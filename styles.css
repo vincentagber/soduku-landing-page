@@ -1,4 +1,16 @@
 body {
+    overflow-x: hidden;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .nav-links {
+      flex-wrap: wrap;
+    }
+    .testimonial-slider {
+      overflow-y: auto;
+    
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
